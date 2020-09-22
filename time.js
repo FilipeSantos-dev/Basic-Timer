@@ -2,17 +2,26 @@ var hours = 0;
 var min = 0;
 var sec = 0;
 var cron;
-
+//Função que começa o cronometro
 function start() {
   cron = setInterval(() => {
     timer();
   }, 1000);
+  document.getElementById('start').disabled=true;
+  document.getElementById('stop').disabled=false;
+  document.getElementById('zerar').disabled=false;
 }
 
+//Função que interrompe o cronometro
 function stop() {
   clearInterval(cron);
+
+  document.getElementById('start').disabled=false;
+  document.getElementById('stop').disabled=true;
+  document.getElementById('zerar').disabled=false;
 }
 
+//Função que zera o cronometro
 function zerar() {
   document.getElementById('sec').innerText = `00`;
   sec = 0;
@@ -21,8 +30,12 @@ function zerar() {
   document.getElementById('hours').innerText = `00`;
   hours = 0;
   stop();
+  document.getElementById('start').disabled=false;
+  document.getElementById('stop').disabled=true;
+  document.getElementById('zerar').disabled=true;
 }
 
+//Função que configura o tempo do cronometro
 function timer() {
   sec++;
   verify(sec, 'sec');
@@ -40,6 +53,7 @@ function timer() {
   }
 }
 
+//Função que faz uma verificação para ver se é ou não preciso colocar dois 0 no elemento
 function verify(temp, prop) {
   if(temp < 10){
     document.getElementById(`${prop}`).innerText = `0${temp}`;
