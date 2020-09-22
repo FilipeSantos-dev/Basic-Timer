@@ -1,0 +1,53 @@
+body {
+  background: rgba(0, 0, 0, 0.808);
+}
+
+#cronometro-container {
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  border: 2px solid;
+  border-color: white;
+  margin: 40px 450px 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#cronometro-container h1 {
+  color: white;
+  margin: 10px;
+  font-size: 100px;
+}
+
+h2 {
+  color: white;
+  font-size: 100px;
+}
+
+#buttons-container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  height: 300px;
+  border: 2px solid;
+  border-color: white;
+  margin: 100px 60px;
+}
+
+button {
+  cursor: pointer;
+  margin-top: 20px;
+  width: 250px;
+  height:60px;
+  font: 30px 'Poppins';
+  background: aqua;
+  transition: 1s;
+}
+
+button:hover {
+  background: rgb(74, 158, 158);
+}
