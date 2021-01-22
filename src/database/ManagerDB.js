@@ -1,33 +1,20 @@
-class ManegerDB {
+module.exports = class ManegerDB {
 
     constructor() {
-        this.mongoose = require('./connection'); 
+        this.mongoose = require('./connection');
+        require('../database/Models/Times');
+        this.Times = this.mongoose.model('timers');
     }
 
-    createSchema() {
-        const TimeSchema = new this.mongoose.Schema({
-            time: {
-                type: String,
-                required: true
-            },
-            create_At: {
-                type: Date,
-                default: Date.now
-            },
-        });
+    loadTime(data) {
 
-        this.mongoose.model('Timers', TimeSchema);
-    }
+        const newTime = {
+            time: data.data
+        };
 
-    loadTime() {
+        console.log(newTime);
 
-        this.createSchema();
-
-        const newTime = this.mongoose.model('Timers');
-
-        new newTime({
-            time: "25487896"
-        }).save().then(() => {
+        new this.Times(newTime).save().then(() => {
             console.log('>>> Cadastrado com sucesso!');
         })
         .catch(err => {
@@ -35,6 +22,3 @@ class ManegerDB {
         });
     }
 }
-
-const manager = new ManegerDB();
-manager.loadTime();
